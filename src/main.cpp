@@ -310,7 +310,7 @@ int main() {
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(0.00f, 17.00f + sin(glfwGetTime()), -50.00f)); // translate it down so it's at the center of the scene
         model = glm::scale(model, glm::vec3(0.02, 0.02, 0.02));// it's a bit too big for our scene, so scale it down
-//        model=glm::rotate(model, glm::radians(90.0f), glm::vec3(-1.0f, 0.0f, 0.0f));
+//        model=glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 0.0f));
 //        model=glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, -1.0f));
 //        model=glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, -1.0f));
         //model=glm::rotate(model, glm::radians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -322,7 +322,7 @@ int main() {
         model=glm::mat4(1.0f);
         model=glm::translate(model, glm::vec3(40.0f, 17.00f + 1.2f*sin(glfwGetTime()), -0.00f));
         model=glm::scale(model, glm::vec3(0.02, 0.02, 0.02));
-//        model=glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f, 0.0f, -4.0f));
+        model=glm::rotate(model, glm::radians(-130.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         //model = glm::rotate(model, glm::radians(50.0f), glm::vec3(0.0f, 0.0f, 1.0f));
         //model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         ourShader.setMat4("model", model);
@@ -332,7 +332,7 @@ int main() {
         model=glm::mat4(1.0f);
         model=glm::translate(model, glm::vec3(-40.0f, 17.00f + 1.2f*sin(glfwGetTime()), -0.00f));
         model=glm::scale(model, glm::vec3(0.02, 0.02, 0.02));
-//        model=glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        model=glm::rotate(model, glm::radians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         //model = glm::rotate(model, glm::radians(50.0f), glm::vec3(0.0f, 0.0f, 1.0f));
         //model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         ourShader.setMat4("model", model);
