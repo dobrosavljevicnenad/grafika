@@ -179,7 +179,7 @@ int main() {
     Model island2("resources/objects/island1/untitled.obj");
     island2.SetShaderTextureNamePrefix("material.");
     Model island3("resources/objects/island1/untitled.obj");
-    island2.SetShaderTextureNamePrefix("material.");
+    island3.SetShaderTextureNamePrefix("material.");
 
     PointLight& pointLight = programState->pointLight;
     pointLight.position = glm::vec3(4.0f, 4.0, 0.0);
@@ -189,7 +189,7 @@ int main() {
     pointLight.specular = glm::vec3(0.1f,0.1f,0.1f);
 
     pointLight.constant = 1.0f;
-    pointLight.linear = 0.03f;
+    pointLight.linear = 0.0f;
     pointLight.quadratic = 0.0f;
 
     float skyboxVertices[] = {
@@ -308,9 +308,9 @@ int main() {
 
         // render the loaded model
         glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.00f, 17.00f + sin(glfwGetTime()), -50.00f)); // translate it down so it's at the center of the scene
+        model = glm::translate(model, glm::vec3(0.00f, 17.00f + 2*sin(glfwGetTime()), -40.00f)); // translate it down so it's at the center of the scene
         model = glm::scale(model, glm::vec3(0.02, 0.02, 0.02));// it's a bit too big for our scene, so scale it down
-//        model=glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+        model=glm::rotate(model, glm::radians(-55.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 //        model=glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, -1.0f));
 //        model=glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, -1.0f));
         //model=glm::rotate(model, glm::radians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -320,7 +320,7 @@ int main() {
         //render zen island2
 
         model=glm::mat4(1.0f);
-        model=glm::translate(model, glm::vec3(40.0f, 17.00f + 1.2f*sin(glfwGetTime()), -0.00f));
+        model=glm::translate(model, glm::vec3(20.0f, 17.00f + 2*sin(glfwGetTime()), -0.00f));
         model=glm::scale(model, glm::vec3(0.02, 0.02, 0.02));
         model=glm::rotate(model, glm::radians(-130.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         //model = glm::rotate(model, glm::radians(50.0f), glm::vec3(0.0f, 0.0f, 1.0f));
@@ -330,7 +330,7 @@ int main() {
 
         //render ostrvo model
         model=glm::mat4(1.0f);
-        model=glm::translate(model, glm::vec3(-40.0f, 17.00f + 1.2f*sin(glfwGetTime()), -0.00f));
+        model=glm::translate(model, glm::vec3(-40.0f, 17.00f + 2*sin(glfwGetTime()), -20.00f));
         model=glm::scale(model, glm::vec3(0.02, 0.02, 0.02));
         model=glm::rotate(model, glm::radians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         //model = glm::rotate(model, glm::radians(50.0f), glm::vec3(0.0f, 0.0f, 1.0f));
@@ -385,13 +385,13 @@ void processInput(GLFWwindow *window) {
         glfwSetWindowShouldClose(window, true);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        programState->camera.ProcessKeyboard(FORWARD, deltaTime);
+        programState->camera.ProcessKeyboard(FORWARD, 4*deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        programState->camera.ProcessKeyboard(BACKWARD, deltaTime);
+        programState->camera.ProcessKeyboard(BACKWARD, 4*deltaTime);
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        programState->camera.ProcessKeyboard(LEFT, deltaTime);
+        programState->camera.ProcessKeyboard(LEFT, 4*deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        programState->camera.ProcessKeyboard(RIGHT, deltaTime);
+        programState->camera.ProcessKeyboard(RIGHT, 4*deltaTime);
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
