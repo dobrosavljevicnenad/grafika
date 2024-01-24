@@ -174,6 +174,9 @@ int main() {
     // configure global opengl state
     // -----------------------------
     glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // build and compile shaders
     // -------------------------
@@ -322,6 +325,7 @@ int main() {
     // configure shaders
     ourShader.use();
 
+
     skyboxShader.use();
     skyboxShader.setInt("skybox", 0);
 
@@ -406,6 +410,10 @@ int main() {
         ourShader.setMat4("projection", projection);
         ourShader.setMat4("view", view);
 
+        // face culling
+        glEnable(GL_CULL_FACE);
+        glCullFace(GL_BACK);
+
         //island1
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(0.00f, 17.00f + 2*sin(glfwGetTime()), -40.00f)); // translate it down so it's at the center of the scene
@@ -432,7 +440,7 @@ int main() {
         model=glm::rotate(model, glm::radians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         ourShader.setMat4("model", model);
         island3.Draw(ourShader);
-
+        glDisable(GL_CULL_FACE);
 
         // skybox uvek na kraju
         glDepthFunc(GL_LEQUAL);
